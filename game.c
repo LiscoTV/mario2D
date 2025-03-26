@@ -13,7 +13,7 @@ int jouer(SDL_Renderer* renderer) {
     while(continuer){ //coeur du jeu ici, les actions seront repété pour faire le déplacement des différentes images, ...
         
         //gérer les différentes actions. 
-        
+        //truc
         
     }
     
