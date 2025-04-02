@@ -10,15 +10,13 @@ int jouer(SDL_Renderer* renderer) {
 	//charger image et personnage.  
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
+    
 
-
-    int continuer = 1; //a utiliser pour savoir si on continue la boucle du jeu ou si on arrête. 
+    int continuer = 1; 
     SDL_Event events;
 
-    while(continuer){ //coeur du jeu ici, les actions seront repété pour faire le déplacement des différentes images, ...
+    while(continuer){ 
         SDL_RenderClear(renderer);
-        //gérer les différentes actions. 
-        //truc
         SDL_Event croix;
 		while (SDL_PollEvent(&croix) || continuer == 1 )	{
 			switch(croix.type)	{
@@ -30,7 +28,6 @@ int jouer(SDL_Renderer* renderer) {
 				case SDL_KEYDOWN:
             		switch(croix.key.keysym.sym) {
 						case SDLK_ESCAPE:
-                        SDL_Log("touche escape 2");
 						continuer = 0;
                         break;
 						}

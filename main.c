@@ -62,8 +62,7 @@ int main(int argc, char *argv[])	{
 						break;
 					}
 						switch(croix.key.keysym.sym) {
-							case SDLK_1:
-							SDL_Log("touche 1");
+							case SDLK_1
 							jouer(renderer);
 							break;
 						}
