@@ -3,6 +3,6 @@
 
 #include "charactere.h"
 
+
 void freePersonnage(Personnage* mario, Personnage **goomba, int nbGoomba) {
-    
 }

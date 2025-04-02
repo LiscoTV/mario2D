@@ -10,8 +10,12 @@
 
 int init(SDL_Window **window, SDL_Renderer **renderer, int w, int h);
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[])	{
+
+	
+	
+	
+	//Code pour creer la fenetre
 	SDL_Window *window = NULL;
     if(0 != SDL_Init(SDL_INIT_VIDEO))	{
         fprintf(stderr, "Erreur SDL_Init : %s", SDL_GetError());
@@ -29,19 +33,50 @@ int main(int argc, char *argv[])
 			SDL_DestroyWindow(window);
 			SDL_Quit();
 		}
+
+
+
+		//code pour mettre l'image
 		SDL_RenderClear(renderer);
 		SDL_Texture * image = loadImage("img/menu.jpg",renderer);
 		SDL_RenderCopy(renderer,image,NULL,NULL);
 		SDL_RenderPresent(renderer); 
-	
-	
-	//SDL_SetRenderDrawColor(renderer, 255,0,0,0)
-	//for(;;)	{	
-		SDL_Delay(3000);	
-	//}
 
+		
+		
+		
+		//code pour fermer la boucle avec la croix ou echap
+		SDL_Event croix;
+		int continuer = 1;
+		while (SDL_PollEvent(&croix) || continuer == 1 )	{
+			switch(croix.type)	{
+
+				case SDL_QUIT:
+					continuer = 0;
+					break;
+
+				case SDL_KEYDOWN:
+            		switch(croix.key.keysym.sym) {
+						case SDLK_ESCAPE:
+						continuer = 0;
+						break;
+					}
+						switch(croix.key.keysym.sym) {
+							case SDLK_1:
+							SDL_Log("touche 1");
+							jouer(renderer);
+							break;
+						}
+						
+						
+				
+			}
+	
+		}	
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
 	SDL_Quit();
+	
 	return EXIT_SUCCESS;
-	return 0;
 }
 
