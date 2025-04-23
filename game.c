@@ -5,9 +5,15 @@
 
 
 
+
 int jouer(SDL_Renderer* renderer) {
 
 	//charger image et personnage.  
+    
+    
+
+
+
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
     
@@ -40,6 +46,8 @@ int jouer(SDL_Renderer* renderer) {
 	//a vous de compléter, au fur et à mesure, les deux fonctions en dessous pour bien faire le nettoyage. 
     //LibererMap(map, sprites);
     //freePersonnage(mario, goomba, nbGoomba);
-
+    free(image);
+    SDL_DestroyRenderer(renderer);
+    SDL_Quit();
     return continuer;
 }
