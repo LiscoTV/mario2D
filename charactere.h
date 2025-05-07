@@ -19,14 +19,14 @@ Attention la map doit déjà être chargé avant de créer un charactère.
     {
         SDL_Texture** image; //contient toutes les images nécessaire pour mario (différentes direction et saut)
         SDL_Rect position; //sa position à l'instant t
-        int jump = 0; //Si mario saute lors de la montée du saut jump = 1, sinon 0
-        int jumptime = 0; //correspond à la durée depuis quand mario fait un saut, à 70 on arrête
-        int gravite = 0; //vaut 1 si mario est dans les air, 0 sinon. 
-        int direction, dernieredirection = 0; //direction vers laquelle est dirigé mario, 1 : droite, 2 : gauche, 0 : statique) 
+        int jump ; //Si mario saute lors de la montée du saut jump = 1, sinon 0
+        int jumptime ; //correspond à la durée depuis quand mario fait un saut, à 70 on arrête
+        int gravite ; //vaut 1 si mario est dans les air, 0 sinon. 
+        int direction, dernieredirection; //direction vers laquelle est dirigé mario, 1 : droite, 2 : gauche, 0 : statique) 
         int temp; //permet de faire varier les sprites de mario dans le temps.
-        int win = 0; //vaut 1 si le personnage gagne, -1 si il perd, 0 sinon. 
-        int invisible = 0; //utilisé pour les goombas quand il meurt vaut 1 dans ce cas, 0 si en vit.
-        int lvl = 1, lvlperdu = -1;
+        int win ; //vaut 1 si le personnage gagne, -1 si il perd, 0 sinon. 
+        int invisible ; //utilisé pour les goombas quand il meurt vaut 1 dans ce cas, 0 si en vit.
+        int lvl , lvlperdu ;
     };
 
     
