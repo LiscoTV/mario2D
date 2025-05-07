@@ -3,22 +3,23 @@
 #include "charactere.h"
 #include "event.h"
 
+                
 
 
 
 int jouer(SDL_Renderer* renderer) {
 
-	//charger image et personnage.  
-    Personnage *mario = creerPersonnage(renderer);
-    SDL_RenderCopy(renderer, mario->image[frame], NULL, &mario->position);
-
+	//charger image et personnage.
     
-
-
-
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
-    
+
+    Personnage *mario = creerPersonnage(renderer);
+    if (mario == NULL) {
+        SDL_Log("Erreur");
+        return 0;
+    }
+
 
     int continuer = 1; 
     SDL_Event events;
@@ -39,25 +40,43 @@ int jouer(SDL_Renderer* renderer) {
 						continuer = 0;
                         break;
 						}
+                case SDLK_UP:
+                        if (mario->jump == 0 && mario->gravite == 0) {
+                            mario->jump = 1;
+                            mario->gravite = 1;
+                        }
+                        break;
+                case SDLK_LEFT:
                         
+                        mario->direction = 2;
+                        mario->dernieredirection = 2;
+                        break;
+                case SDLK_RIGHT:
+                        
+                        mario->direction = 1;
+                        mario->dernieredirection = 1;
+                        break;
+                 
             }
+
+            SDL_RenderCopy(renderer, mario->image[0], NULL, &mario->position); 
+
+
             SDL_RenderPresent(renderer);
+
         }
+
     }
-    
-	//a vous de compléter, au fur et à mesure, les deux fonctions en dessous pour bien faire le nettoyage. 
-    //LibererMap(map, sprites);
-    //freePersonnage(mario, goomba, nbGoomba);
-    void freePersonnage(Personnage *mario) {
-        if (mario) {
-            for (int i = 0; i < 6; i++) {
-                if (mario->image[i]) SDL_DestroyTexture(mario->image[i]);
-            }
-            free(mario->image);
-            free(mario);
-        }
-    }
-    SDL_DestroyRenderer(renderer);
-    SDL_Quit();
-    return continuer;
+
+    freePersonnage(mario, NULL, 0);
+        SDL_DestroyRenderer(renderer);
+        SDL_Quit();
+        return continuer;
 }
+
+
+//a vous de compléter, au fur et à mesure, les deux fonctions en dessous pour bien faire le nettoyage. 
+    //LibererMap(map, sprites);
+    //
+      
+    

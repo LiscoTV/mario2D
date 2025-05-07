@@ -14,6 +14,7 @@ Personnage *creerPersonnage(SDL_Renderer *renderer) {
     mario->image = malloc(sizeof(SDL_Texture*)*NUMBER_IMAGE_MARIO);
     if (mario->image == NULL) {
         SDL_Log("Erreur");
+        free(mario);
         return 0;
     }
   
@@ -29,8 +30,8 @@ Personnage *creerPersonnage(SDL_Renderer *renderer) {
 
 
      //structure Mario
-     mario->position.x = 100;
-     mario->position.y = 300;
+     mario->position.x = 10;
+     mario->position.y = 700;
      mario->position.w = WIDTH_MARIO ;
      mario->position.h = HEIGHT_MARIO ;
  
@@ -47,7 +48,12 @@ Personnage *creerPersonnage(SDL_Renderer *renderer) {
     return mario;
 }
 
-
-
 void freePersonnage(Personnage* mario, Personnage **goomba, int nbGoomba) {
+    if (mario) {
+        for (int i = 0; i < NUMBER_IMAGE_MARIO; i++) {
+            if (mario->image[i]) SDL_DestroyTexture(mario->image[i]);
+        }
+        free(mario->image);
+        free(mario);
+    }
 }
