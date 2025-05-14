@@ -9,5 +9,6 @@ et si le niveau est fini (win et loose).
     #include "file.h"
     #include "charactere.h"
 
-  
+    void deplacement(SDL_Renderer *renderer, Personnage *mario);
+    void afficherPersonnage(SDL_Renderer *renderer, Personnage *mario);
 #endif
